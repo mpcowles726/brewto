@@ -1,6 +1,13 @@
 source 'https://rubygems.org'
+# DOTEVN to keep keys hidden
+gem 'dotenv-rails', :groups => [:development, :test], :require => 'dotenv/rails-now'
 
+# Adds facebook authentication
+gem 'omniauth-facebook'
 
+gem 'devise'
+
+gem 'bootstrap-sass', '~> 3.3.6'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
 # Use postgresql as the database for Active Record
