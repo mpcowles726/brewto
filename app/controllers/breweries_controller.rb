@@ -1,5 +1,9 @@
 class BreweriesController < ApplicationController
   before_action :set_brewery, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :correct_user, only: [:edit, :update, :destroy]
+
+    respond_to :html
 
   # GET /breweries
   # GET /breweries.json
@@ -14,7 +18,7 @@ class BreweriesController < ApplicationController
 
   # GET /breweries/new
   def new
-    @brewery = Brewery.new
+    @brewery = current_user.breweries.build
   end
 
   # GET /breweries/1/edit
@@ -24,7 +28,7 @@ class BreweriesController < ApplicationController
   # POST /breweries
   # POST /breweries.json
   def create
-    @brewery = Brewery.new(brewery_params)
+    @brewery = current_user.breweries.build(brewery_params)
 
     respond_to do |format|
       if @brewery.save
@@ -70,5 +74,10 @@ class BreweriesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def brewery_params
       params[:brewery]
+    end
+
+    def correct_user
+        @brewery = current_user.breweries.find_by(id: params[:id])
+        redirect_to breweries_path, notice: "Not authorized to edit this brewery" if @brewery.nil?
     end
 end
