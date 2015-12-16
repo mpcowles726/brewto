@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+# brewery DB API gem
+gem 'brewery_db'
 # adds traceroute to help find unused routes and unreachable action methods
 gem 'traceroute'
 # jquery-turbolinks

@@ -1,31 +1,48 @@
 <p id="notice"><%= notice %></p>
 
-
-<h1>Listing Breweries</h1>
-
-
+<div class="panel panel-default">
+<div class="panel-header">
+<h1 id="listingHeader">Listing Breweries</h1>
+</div>
 
 <div id="breweries" class="transitions-enabled"> 
-    <% @breweries.each do |brewery| %>
+  
     <div class="box">
       <div class="panel panel-default">
+        <% @breweries.each do |brewery| %>
       <div class="panel-body">
-      <%= brewery.name %></br>
-      <%= brewery.address %></br>
-      <%= brewery.latitude %></br>
-      <%= brewery.longitude %></br>
-      </div>
-      <div class="panel-footer">
+   <p>
+  <strong>Name:</strong>
+  <%= brewery.name %>
+ </p>
+<p>
+  <strong>Address:</strong>
+  <%= brewery.address %>
+</p>
+<p>
+  <strong>Latitude:</strong>
+  <%= brewery.latitude %>
+</p>
+<p>
+  <strong>Longitude:</strong>
+  <%= brewery.longitude %>
+</p>
 
+        </br>
+        <hr size="3" color="black">
+</div>
+
+<div class="panel-footer">
         <%= link_to 'Show', brewery %></br>
+
         <%= link_to 'Edit', edit_brewery_path(brewery) %></br>
         <%= link_to 'Destroy', brewery, method: :delete, data: { confirm: 'Are you sure?' } %></br>
       
     
-    <% end %>
-  </div>
-  </div>
+   
+  
 
-</br>
-
-<%= link_to 'New Brewery', new_brewery_path %>
+<%= link_to 'Create New Brewery', new_brewery_path %>
+</div>
+ <% end %>
+</div>

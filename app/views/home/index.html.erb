@@ -9,6 +9,8 @@
 			<%= link_to 'Sign Out', destroy_user_session_path, class: 'btn btn-default', :method => :delete %>
 		    <%= link_to 'Nearby Breweries', breweries_path, class: 'btn btn-default' %>
 
+		  
+
 			<% else %> 
 			<%= link_to 'Login', new_user_session_path, class: 'btn btn-default' %>
 			<% end %>

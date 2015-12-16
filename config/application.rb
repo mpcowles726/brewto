@@ -22,5 +22,14 @@ module Brew
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+     brewery_db = BreweryDB::Client.new do |config|
+     config.api_key = ENV['API_KEY']
+     end
   end
+
+
 end
+
+
+
