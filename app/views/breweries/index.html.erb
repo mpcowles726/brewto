@@ -1,28 +1,31 @@
 <p id="notice"><%= notice %></p>
 
+
 <h1>Listing Breweries</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
+
+<div id="breweries" class="transitions-enabled"> 
     <% @breweries.each do |brewery| %>
-      <tr>
-        <td><%= brewery.description %></td>
-        <td><%= link_to 'Show', brewery %></td>
-          <% if brewery.user == current_user %>
-        <td><%= link_to 'Edit', edit_brewery_path(brewery) %></td>
-        <td><%= link_to 'Destroy', brewery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <div class="box">
+      <div class="panel panel-default">
+      <div class="panel-body">
+      <%= brewery.name %></br>
+      <%= brewery.address %></br>
+      <%= brewery.latitude %></br>
+      <%= brewery.longitude %></br>
+      </div>
+      <div class="panel-footer">
 
-<br>
+        <%= link_to 'Show', brewery %></br>
+        <%= link_to 'Edit', edit_brewery_path(brewery) %></br>
+        <%= link_to 'Destroy', brewery, method: :delete, data: { confirm: 'Are you sure?' } %></br>
+      
+    
+    <% end %>
+  </div>
+  </div>
+
+</br>
 
 <%= link_to 'New Brewery', new_brewery_path %>

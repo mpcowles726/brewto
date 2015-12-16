@@ -13,7 +13,30 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
-.body {
-background: url('/assets/images/still.jpeg')
 
+
+
+.splash {
+	background-image: url('still.jpeg')
+}
+
+.jumbotron {
+	opacity: .85;
+	background-color: black;
+	margin-top: 30px;
+}
+
+.jumbotron h1{
+	opacity: 1;
+	color: white;
+}
+
+.jumbotron p {
+	opacity: 1;
+	color: grey;
+}
+
+.navbar {
+	opacity: .85;
+	background-color: black;
 }

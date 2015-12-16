@@ -1,4 +1,14 @@
 source 'https://rubygems.org'
+
+# adds traceroute to help find unused routes and unreachable action methods
+gem 'traceroute'
+# jquery-turbolinks
+gem 'jquery-turbolinks'
+# masonry
+gem 'masonry-rails'
+# geocoder
+gem 'geocoder'
+
 # DOTEVN to keep keys hidden
 gem 'dotenv-rails', :groups => [:development, :test], :require => 'dotenv/rails-now'
 

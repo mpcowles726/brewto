@@ -8,7 +8,11 @@ class BreweriesController < ApplicationController
   # GET /breweries
   # GET /breweries.json
   def index
+      if params[:search].present?
+        @breweries = Brewery.near(params[:search], 50, :order => :distance)
+      else
     @breweries = Brewery.all
+      end
   end
 
   # GET /breweries/1
@@ -28,7 +32,7 @@ class BreweriesController < ApplicationController
   # POST /breweries
   # POST /breweries.json
   def create
-    @brewery = current_user.breweries.build(brewery_params)
+    @brewery = Brewery.new(params[:location])
 
     respond_to do |format|
       if @brewery.save
