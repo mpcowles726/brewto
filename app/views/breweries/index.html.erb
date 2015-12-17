@@ -1,48 +1,41 @@
-<p id="notice"><%= notice %></p>
 
-<div class="panel panel-default">
-<div class="panel-header">
-<h1 id="listingHeader">Listing Breweries</h1>
-</div>
-
-<div id="breweries" class="transitions-enabled"> 
-  
-    <div class="box">
-      <div class="panel panel-default">
-        <% @breweries.each do |brewery| %>
-      <div class="panel-body">
-   <p>
-  <strong>Name:</strong>
-  <%= brewery.name %>
- </p>
-<p>
-  <strong>Address:</strong>
-  <%= brewery.address %>
-</p>
-<p>
-  <strong>Latitude:</strong>
+<div id="breweries" class="transitions-enabled">
+  <% @breweries.each do |brewery| %>
+      <div class="box">
+        <div class="panel panel-default">
+    <%= image_tag ("https://maps.googleapis.com/maps/api/streetview?size=300x300&location=#{brewery.latitude}%2C#{brewery.longitude}&key=#{ENV['FBAPI_KEY']}") %>
+     <br>
+     <div class="panel-body">
+  <strong><%= brewery.name %></strong>
+     <br>
+     <br>
+    <strong>Address: </strong>
+   <%= brewery.address %>
+     <br>
+     <br>
+     <strong>Latitude:</strong>
   <%= brewery.latitude %>
-</p>
-<p>
-  <strong>Longitude:</strong>
+     <br>
+     <br>
+     <strong>Longitude:</strong>
   <%= brewery.longitude %>
-</p>
+     <br>
+    </div>
 
-        </br>
-        <hr size="3" color="black">
-</div>
+    <div class="panel-footer">
+     <br>
+     <% if brewery.user == current_user %>
+    <%= link_to 'Edit', edit_brewery_path(brewery) %>
+        <br>
+    <%= link_to 'Delete', brewery, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>    
+    </div>
 
-<div class="panel-footer">
-        <%= link_to 'Show', brewery %></br>
-
-        <%= link_to 'Edit', edit_brewery_path(brewery) %></br>
-        <%= link_to 'Destroy', brewery, method: :delete, data: { confirm: 'Are you sure?' } %></br>
-      
+    </div>
     
-   
+    </div>
+    
   
-
-<%= link_to 'Create New Brewery', new_brewery_path %>
-</div>
  <% end %>
-</div>
+
+

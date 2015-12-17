@@ -3,8 +3,10 @@ class Brewery < ActiveRecord::Base
 
 	belongs_to :user
 
-	has_attached_file :image, :styles => { 
-		:medium => "300x300>", :thumb => "100x100>"
-	}
-	validates_attachment_content_type :image, :content_type => /\Aimage\/.*\z/
+	has_attached_file :image, :styles => { medium:  "300x300>" }, default_url: "http://brokeassstuart.com/wp-content/pictsnShit/2015/09/chug-pug_:medium.jpg"
+		
+	
+
+	geocoded_by :address
+	after_validation :geocode
 end

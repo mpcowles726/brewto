@@ -3,8 +3,10 @@
 	<div class="panel-heading">
 <h3> Nearby Breweries </h3>
 </div>
-   <% @breweries.each do |brewery| %>
 <div class="panel-body">
+   <% @breweries.each do |brewery| %>
+  <%= image_tag @brewery.image.url(:medium) %></br>
+
 <p>
  	<strong>Name:</strong>
  	<%= brewery.name %>
@@ -21,16 +23,20 @@
 	<strong>Longitude:</strong>
 	<%= brewery.longitude %>
 </p>
-</div>
-<hr size="3" color="black">
-
-<% end %>
-
-<div class="panel-footer">
-
 
 <%= link_to 'Edit', edit_brewery_path(@brewery) %> |
 
 <%= link_to 'Back', breweries_path %>
+<hr size="3" color="black">
+<% end %>
+
 </div>
+
+
+
+
+</br>
+
+
 </div>
+

@@ -9,7 +9,12 @@ class BreweriesController < ApplicationController
   # GET /breweries.json
   def index
       
-    @breweries = Brewery.all
+      if params[:search].present?
+        @breweries = Brewery.near(params[:search], 25, :order => :distance)
+      else
+        @breweries = Brewery.all        
+      end
+    
 
   end
 
@@ -35,7 +40,7 @@ class BreweriesController < ApplicationController
 
     respond_to do |format|
       if @brewery.save
-        format.html { redirect_to @brewery, notice: 'Brewery was successfully created.' }
+        format.html { redirect_to breweries_path, notice: 'Brewery was successfully created.' }
         format.json { render :show, status: :created, location: @brewery }
       else
         format.html { render :new }
@@ -72,12 +77,12 @@ class BreweriesController < ApplicationController
 
     # Use callbacks to share common setup or constraints between actions.
     def set_brewery
-      @brewery = Brewery.find(params[:id])
+      @brewery = Brewery.find(params[:id])    
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def brewery_params
-      params.require(:brewery).permit(:address, :name, :longitude, :latitude)
+      params.require(:brewery).permit(:address, :name, :longitude, :latitude, :string)
     end
 
     def correct_user

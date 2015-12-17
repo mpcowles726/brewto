@@ -10,7 +10,14 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
+<div class="panel panel-default">
+<div  class="panel-header">
+<h1>New Brewery</h1>
+</div>
+<div class="panel-body">
+  <%= form_for @brewery, :html => {multipart: true} do |f| %>
+
+   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
@@ -27,8 +34,18 @@
     <%= f.label :longitude %><br>
     <%= f.text_field :longitude %>
   </div>
-  <div class="actions">
+  <div class="field">  
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+ </div>
+ <div class="actions">
     <%= f.submit %>
+<div class="footer">
+<%= link_to 'Back', breweries_path %>
+</div>
+  </div>
+  <% end %>
+  <% end %>
+  </div>
   </div>
 
-<% end %>

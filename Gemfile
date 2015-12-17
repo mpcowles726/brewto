@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 # paperclip
-gem 'paperclip', '~>4.2.1'
+gem 'paperclip', '~>4.3'
 # brewery DB API gem
 gem 'brewery_db'
 # adds traceroute to help find unused routes and unreachable action methods
