@@ -19,12 +19,13 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
             <li>
                 <%= link_to 'Create New Brewery', new_brewery_path, class: 'btn btn-default' %>
           </li>
 
             <li>
-        <% if user_signed_in? %>
+      
         <%= link_to 'Edit User Settings', edit_user_registration_path, class: 'btn btn-default' %>
         <% end %>
         </li>

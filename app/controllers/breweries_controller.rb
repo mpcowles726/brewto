@@ -10,7 +10,7 @@ class BreweriesController < ApplicationController
   def index
       
       if params[:search].present?
-        @breweries = Brewery.near(params[:search], 25, :order => :distance)
+        @breweries = Brewery.near(params[:search], 25)
       else
         @breweries = Brewery.all        
       end
